@@ -14,7 +14,7 @@ tl.from("#part-2 h4",{
     stagger:0.2,
 })
 
-tl.from("#page-1 h1", {
+tl.from("#section-1 h1", {
     y:20,
     opacity:0,
     scale:0.5,
@@ -22,40 +22,10 @@ tl.from("#page-1 h1", {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-gsap.to("#page-2 h1",{
+gsap.to("#section-2 h1",{
     transform:"translateX(-120%)",
     scrollTrigger:{
-        trigger:"#page-2",
+        trigger:"#section-2",
         scroller:"body",
         start:"top 0%",
         end:"top -150%",
