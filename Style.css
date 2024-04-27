@@ -54,9 +54,22 @@ nav {
 }
 
 #section-3 {
+    display: flex;
+    /* padding-left:20% ; */
+    justify-content: center;
+    height: 200px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+svg {
+    background-color: #1f1f1f;
+}
+
+#section-4 {
+    background-color: aqua;
     height: 100vh;
     width: 100%;
-    background-color: black;
 }
 
 
