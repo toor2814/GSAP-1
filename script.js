@@ -1,57 +1,82 @@
-var tl = gsap.timeline()
+var tl = gsap.timeline();
 
 tl.from("nav h2", {
-    scale:0,
-    duration:1,
-    // scrub:5,
-    delay:1,
-    opacity:0
-})
+  scale: 0,
+  duration: 1,
+  // scrub:5,
+  delay: 1,
+  opacity: 0,
+});
 
-tl.from("#part-2 h4",{
-    y:-70,
-    duration:0.7,
-    stagger:0.2,
-})
+tl.from("#part-2 h4", {
+  y: -70,
+  duration: 0.7,
+  stagger: 0.2,
+});
 
 tl.from("#section-1 h1", {
-    y:20,
-    opacity:0,
-    scale:0.5,
-    duration:0.5,
-})
+  y: 20,
+  opacity: 0,
+  scale: 0.5,
+  duration: 0.5,
+});
 
+gsap.to("#section-2 h1", {
+  transform: "translateX(-120%)",
+  scrollTrigger: {
+    trigger: "#section-2",
+    scroller: "body",
+    start: "top 0%",
+    end: "top -150%",
+    scrub: 2,
+    pin: true,
+  },
+});
 
-gsap.to("#section-2 h1",{
-    transform:"translateX(-120%)",
-    scrollTrigger:{
-        trigger:"#section-2",
-        scroller:"body",
-        start:"top 0%",
-        end:"top -150%",
-        scrub:2,
-        pin:true,
-    }
-})
+let initialPath = `M 10 100 Q 450 100 890 100`;
+let finalPath = `M 10 100 Q 450 100 890 100`;
 
-let initialPath = `M 10 100 Q 450 100 890 100`
-let finalPath = `M 10 100 Q 450 100 890 100`
+var string = document.querySelector("#section-3");
 
-var string = document.querySelector("#section-3")
+string.addEventListener("mousemove", function (dets) {
+  initialPath = `M 10 80 Q ${dets.x} ${dets.y} 890 80`;
+  gsap.to("svg path", {
+    attr: { d: initialPath },
+  });
+});
 
-string.addEventListener("mousemove", function(dets){
-    initialPath = `M 10 80 Q ${dets.x} ${dets.y} 890 80`
-    gsap.to("svg path",{
-        attr:{d:initialPath}
-    })
-})
-
-string.addEventListener("mouseleave", function(dets){
-  gsap.to("svg path",{
-    attr:{d:finalPath},
-    duration:0.3,
+string.addEventListener("mouseleave", function (dets) {
+  gsap.to("svg path", {
+    attr: { d: finalPath },
+    duration: 0.3,
     ease: "elastic.out(1,0.3)",
-  })  
+  });
+});
+
+
+
+window.addEventListener("wheel",function(dets){
+  if(dets.deltaY>0){
+    gsap.to(".looping ",{
+      x:"0%",
+      duration:2,
+      repeat:-1,
+      ease:"none",
+    })
+    gsap.to(".looping img",{
+      rotate:360,
+    })
+  }else{
+    gsap.to(".looping ",{
+      x:"-100%",
+      duration:2,
+      repeat:-1,
+      ease:"none",
+    })
+    gsap.to(".looping img",{
+      rotate:180,
+    })
+  }
 })
 
 
@@ -72,31 +97,7 @@ string.addEventListener("mouseleave", function(dets){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        markers:true, 
+//        markers:true,
 // x:-1450,
 // duration:5,
 
