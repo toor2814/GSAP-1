@@ -33,6 +33,7 @@ nav {
   transform: translate(-50%, -50%);
   font-size: 80px;
   white-space: nowrap;
+  display: inline-block;
 }
 
 #part-2 {
